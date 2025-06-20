@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import pickle
-
+from sklearn.preprocessing import LabelEncoder
 # === Load model, feature columns, and label encoders ===
 with open('trained_model.sav', 'rb') as f:
     loaded_model, feature_columns, label_encoders = pickle.load(f)
