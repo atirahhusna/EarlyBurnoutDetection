@@ -10,8 +10,9 @@ import pandas as pd
 import pickle
 
 # === Load model, feature columns, and label encoders ===
-with open('trained_model.sav', 'rb') as f:
-    loaded_model, feature_columns, label_encoders = pickle.load(f)
+with open('trained_model.sav', 'wb') as f:
+    pickle.dump((model, X.columns.tolist(), label_encoders), f)
+
 
 # === Streamlit App ===
 def main():
