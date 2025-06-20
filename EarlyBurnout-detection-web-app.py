@@ -10,7 +10,7 @@ import pandas as pd
 import pickle
 
 # === Load model, feature columns, and label encoders ===
-with open('C:/Users/ASUS/OneDrive/Documents/Machine learning/trained_model.sav', 'rb') as f:
+with open('trained_model.sav', 'rb') as f:
     loaded_model, feature_columns, label_encoders = pickle.load(f)
 
 # === Streamlit App ===
