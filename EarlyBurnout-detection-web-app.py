@@ -1,18 +1,10 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Jun 20 16:27:51 2025
-
-@author: ASUS
-"""
-
 import streamlit as st
 import pandas as pd
 import pickle
 
 # === Load model, feature columns, and label encoders ===
-with open('trained_model.sav', 'wb') as f:
-    pickle.dump((model, X.columns.tolist(), label_encoders), f)
-
+with open('trained_model.sav', 'rb') as f:
+    loaded_model, feature_columns, label_encoders = pickle.load(f)
 
 # === Streamlit App ===
 def main():
