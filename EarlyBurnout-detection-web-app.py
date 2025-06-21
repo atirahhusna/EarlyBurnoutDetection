@@ -13,7 +13,7 @@ questions_map = {
     "Are you self-employed?": "self_employed",
     "Does any of your family have mental health problems?": "family_history",
     "Have you ever received mental health treatment?": "treatment",
-    "What is your past mental health history?": "Mental_Health_History",  # ✅ NEW question
+    "What is your past mental health history?": "Mental_Health_History",
     "How many days do you spend indoors (never go out)?": "Days_Indoors",
     "Do your habits frequently change?": "Changes_Habits",
     "Does your mood always swing?": "Mood_Swings",
@@ -30,7 +30,7 @@ options_per_question = {
     "Are you self-employed?": ['No', 'Yes'],
     "Does any of your family have mental health problems?": ['No', 'Yes'],
     "Have you ever received mental health treatment?": ['No', 'Yes'],
-    "What is your past mental health history?": ['No', 'Yes'],  # ✅ Options for the new question
+    "What is your past mental health history?": ['No', 'Yes'],
     "How many days do you spend indoors (never go out)?": [
         '1-14 days', '15-30 days', '31-60 days', 'Go out Every day', 'More than 2 months'
     ],
@@ -94,11 +94,22 @@ def main():
         # Predict
         try:
             prediction = loaded_model.predict(input_df)[0]
+
             if 'Growing_Stress' in label_encoders:
                 label = label_encoders['Growing_Stress'].inverse_transform([prediction])[0]
                 st.success(f"🌟 Predicted Growing Stress Level: **{label}**")
+
+                if label == "Yes":
+                    st.warning("🚨 Your stress level is likely **growing**. Please seek professional help.")
+                    st.markdown(
+                        "🔗 Visit [Mental Health Services - Ministry of Health Malaysia (MOH)](https://www.myhealth.gov.my/en/category/mental-health/) "
+                        "for support and nearby resources."
+                    )
+                else:
+                    st.info("😊 Your mental health appears to be stable. Keep taking care of yourself!")
             else:
                 st.success(f"🌟 Predicted Growing Stress Level (encoded): **{prediction}**")
+
         except Exception as e:
             st.error(f"❌ Prediction failed: {str(e)}")
 
