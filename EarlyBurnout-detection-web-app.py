@@ -13,6 +13,7 @@ questions_map = {
     "Are you self-employed?": "self_employed",
     "Does any of your family have mental health problems?": "family_history",
     "Have you ever received mental health treatment?": "treatment",
+    "What is your past mental health history?": "Mental_Health_History",  # ✅ NEW question
     "How many days do you spend indoors (never go out)?": "Days_Indoors",
     "Do your habits frequently change?": "Changes_Habits",
     "Does your mood always swing?": "Mood_Swings",
@@ -29,6 +30,7 @@ options_per_question = {
     "Are you self-employed?": ['No', 'Yes'],
     "Does any of your family have mental health problems?": ['No', 'Yes'],
     "Have you ever received mental health treatment?": ['No', 'Yes'],
+    "What is your past mental health history?": ['No', 'Yes'],  # ✅ Options for the new question
     "How many days do you spend indoors (never go out)?": [
         '1-14 days', '15-30 days', '31-60 days', 'Go out Every day', 'More than 2 months'
     ],
@@ -70,7 +72,6 @@ def main():
 
         user_input = st.session_state.answers
         encoded_input = {}
-        missing_features = []
 
         for feature in feature_columns:
             if feature in user_input:
@@ -84,14 +85,9 @@ def main():
                 else:
                     encoded_input[feature] = value
             else:
-                # Feature missing from input — use default (0)
-                encoded_input[feature] = 0
-                missing_features.append(feature)
+                st.error(f"❌ Missing required input for feature: {feature}")
+                return
 
-        if missing_features:
-            st.warning(f"Default value used for missing features: {', '.join(missing_features)}")
-
-        # Build dataframe for prediction
         input_df = pd.DataFrame([encoded_input])
         input_df = input_df.reindex(columns=feature_columns, fill_value=0)
 
