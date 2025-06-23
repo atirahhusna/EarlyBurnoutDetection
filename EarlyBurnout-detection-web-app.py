@@ -13,7 +13,7 @@ questions_map = {
     "Are you self-employed?": "self_employed",
     "Does any of your family have mental health problems?": "family_history",
     "Have you ever received mental health treatment?": "treatment",
-    "Do You Have  mental health history?": "Mental_Health_History",
+    "What is your past mental health history?": "Mental_Health_History",
     "How many days do you spend indoors (never go out)?": "Days_Indoors",
     "Do your habits frequently change?": "Changes_Habits",
     "Does your mood always swing?": "Mood_Swings",
