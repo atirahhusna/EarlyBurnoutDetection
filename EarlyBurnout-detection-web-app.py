@@ -13,7 +13,7 @@ questions_map = {
     "Are you self-employed?": "self_employed",
     "Does any of your family have mental health problems?": "family_history",
     "Have you ever received mental health treatment?": "treatment",
-    "What is your past mental health history?": "Mental_Health_History",
+    "Do you have mental history?": "Mental_Health_History",
     "How many days do you spend indoors (never go out)?": "Days_Indoors",
     "Do your habits frequently change?": "Changes_Habits",
     "Does your mood always swing?": "Mood_Swings",
@@ -30,7 +30,7 @@ options_per_question = {
     "Are you self-employed?": ['No', 'Yes'],
     "Does any of your family have mental health problems?": ['No', 'Yes'],
     "Have you ever received mental health treatment?": ['No', 'Yes'],
-    "What is your past mental health history?": ['No', 'Yes'],
+    "Do you have mental history?": ['No', 'Yes'],
     "How many days do you spend indoors (never go out)?": [
         '1-14 days', '15-30 days', '31-60 days', 'Go out Every day', 'More than 2 months'
     ],
